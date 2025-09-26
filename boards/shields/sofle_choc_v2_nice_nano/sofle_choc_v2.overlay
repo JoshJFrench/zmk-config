@@ -37,4 +37,40 @@
             &pro_micro_d1   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* R3 */
         >;
     };
+
+    encoders {
+        compatible = "zmk,gpios-encoder";
+
+        // LEFT ENCODER (Rotation: Up/Down Arrows)
+        encoder_left: encoder_0 {
+            label = "Left Encoder";
+            gpios = <&pro_micro_d5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+                    <&pro_micro_d4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            status = "okay";
+            steps = <4>; // Adjust based on your encoder
+            
+            // Set bindings for Layer 0 (default)
+            bindings = <
+                &kp UP // Clockwise (CW)
+                &kp DOWN // Counter-Clockwise (CCW)
+                &kp MUTE // Press (Mute/Unmute)
+            >;
+        };
+        
+        // RIGHT ENCODER (Rotation: Left/Right Arrows)
+        encoder_right: encoder_1 {
+            label = "Right Encoder";
+            gpios = <&pro_micro_a1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+                    <&pro_micro_a2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            status = "okay";
+            steps = <4>; // Adjust based on your encoder
+            
+            // Set bindings for Layer 0 (default)
+            bindings = <
+                &kp RIGHT // Clockwise (CW)
+                &kp LEFT // Counter-Clockwise (CCW)
+                &trans // Press (Do nothing)
+            >;
+        };
+    };
 };
