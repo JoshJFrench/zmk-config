@@ -1,26 +1,24 @@
 /*
- * Copyright (c) 2020 The ZMK Project Contributors
+ * Copyright (c) 2020 The ZMK Project Contributors [cite: 45]
  *
- * SPDX-License-Identifier: MIT
+ * SPDX-License-Identifier: MIT [cite: 45]
  */
 
 #include "sofle_choc_v2.dtsi"
 
+// LEFT SIDE: Transforms columns 0-5
 &default_transform {
-    col-offset = <0>;
+    col-offset = <0>; [cite: 46]
 };
 
-&kscan0 {
-    col-gpios
-        = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C0 */
-        , <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C1 */
-        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C2 */
-        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C3 */
-        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C4 */
-        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* C5 */
-        ;
-};
-
+// Enables the left encoder [cite: 48]
 &left_encoder {
-    status = "okay";
+    status = "okay"; [cite: 48]
+    // Add the press binding for the left encoder switch (MUTE/UNMUTE)
+    // The rotation bindings are handled in the keymap's sensor-bindings
+    bindings = <
+        &trans // CW
+        &trans // CCW
+        &kp MUTE // Press
+    >;
 };

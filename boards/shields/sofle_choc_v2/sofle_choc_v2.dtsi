@@ -41,25 +41,23 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)  RC(3,6) RC(3,7) RC(3,8) RC(3,9)
             , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R4 */
             ;
     };
-
-    // LEFT ENCODER (Rotation: Up/Down Arrows)
+    // LEFT ENCODER (Rotation: Up/Down Arrows) [cite: 22]
     left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        label = "Left Encoder";
+        compatible = "alps,ec11"; [cite: 22]
+        label = "Left Encoder"; [cite: 23]
         a-gpios = <&pro_micro 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <4>; // Adjust based on your encoder
-        status = "disabled";
+        steps = <4>; [cite: 24] // Adjust based on your encoder
+        status = "okay"; // CHANGE THIS LINE
     };
-    
-    // RIGHT ENCODER (Rotation: Left/Right Arrows)  
+    // RIGHT ENCODER (Rotation: Left/Right Arrows) [cite: 25]  
     right_encoder: encoder_right {
-        compatible = "alps,ec11";
-        label = "Right Encoder";
+        compatible = "alps,ec11"; [cite: 25]
+        label = "Right Encoder"; [cite: 26]
         a-gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <4>; // Adjust based on your encoder
-        status = "disabled";
+        steps = <4>; [cite: 27] // Adjust based on your encoder
+        status = "okay"; // CHANGE THIS LINE
     };
 
     sensors {
