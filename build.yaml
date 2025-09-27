@@ -31,7 +31,7 @@ build:
     shield: sofle_choc_v2
     # Add your keymap folder here
     keymap: my_keymap
-cd
+
   - board: nice_nano_v2
     shield: sofle_choc_v2
     keymap: my_keymap
