@@ -1,2 +1,0 @@
-config SHIELD_SOFLE_CHOC_V2
-    def_bool $(shields_list_contains,sofle_choc_v2)
