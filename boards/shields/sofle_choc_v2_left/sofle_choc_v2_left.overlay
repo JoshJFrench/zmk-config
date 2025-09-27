@@ -1,24 +1,17 @@
 /*
- * Copyright (c) 2020 The ZMK Project Contributors [cite: 45]
+ * Copyright (c) 2020 The ZMK Project Contributors
  *
- * SPDX-License-Identifier: MIT [cite: 45]
+ * SPDX-License-Identifier: MIT
  */
 
 #include "sofle_choc_v2.dtsi"
 
 // LEFT SIDE: Transforms columns 0-5
 &default_transform {
-    col-offset = <0>; [cite: 46]
+    col-offset = <0>;
 };
 
-// Enables the left encoder [cite: 48]
+// Enables the left encoder
 &left_encoder {
-    status = "okay"; [cite: 48]
-    // Add the press binding for the left encoder switch (MUTE/UNMUTE)
-    // The rotation bindings are handled in the keymap's sensor-bindings
-    bindings = <
-        &trans // CW
-        &trans // CCW
-        &kp MUTE // Press
-    >;
+    status = "okay";
 };
