@@ -1,0 +1,5 @@
+config SHIELD_SOFLE_CHOC_V2_LEFT
+    def_bool $(shields_list_contains,sofle_choc_v2_left)
+
+config SHIELD_SOFLE_CHOC_V2_RIGHT
+    def_bool $(shields_list_contains,sofle_choc_v2_right)
