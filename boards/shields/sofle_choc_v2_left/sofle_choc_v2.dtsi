@@ -34,27 +34,27 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)  RC(3,6) RC(3,7) RC(3,8) RC(3,9)
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         row-gpios
-            = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R0 */
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R1 */
-            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R2 */
-            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R3 */
-            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R4 */
+            = <&pro_micro_f1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R0 */
+            , <&pro_micro_f0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R1 */
+            , <&pro_micro_d0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R2 */
+            , <&pro_micro_d1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R3 */
+            , <&pro_micro_d4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* R4 */
             ;
         col-gpios
-            = <&pro_micro 14 GPIO_ACTIVE_HIGH>  /* C0 */
-            , <&pro_micro 15 GPIO_ACTIVE_HIGH>  /* C1 */
-            , <&pro_micro 18 GPIO_ACTIVE_HIGH>  /* C2 */
-            , <&pro_micro 19 GPIO_ACTIVE_HIGH>  /* C3 */
-            , <&pro_micro 20 GPIO_ACTIVE_HIGH>  /* C4 */
-            , <&pro_micro 21 GPIO_ACTIVE_HIGH>  /* C5 */
+            = <&pro_micro_c6 GPIO_ACTIVE_HIGH>  /* C0 */
+            , <&pro_micro_b2 GPIO_ACTIVE_HIGH>  /* C1 */
+            , <&pro_micro_b3 GPIO_ACTIVE_HIGH>  /* C2 */
+            , <&pro_micro_b1 GPIO_ACTIVE_HIGH>  /* C3 */
+            , <&pro_micro_f7 GPIO_ACTIVE_HIGH>  /* C4 */
+            , <&pro_micro_f6 GPIO_ACTIVE_HIGH>  /* C5 */
             ;
     };
     // LEFT ENCODER (Rotation: Up/Down Arrows)
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "Left Encoder";
-        a-gpios = <&pro_micro 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro_d5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro_d6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         steps = <4>; // Adjust based on your encoder
         status = "disabled";
     };
@@ -62,8 +62,8 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)  RC(3,6) RC(3,7) RC(3,8) RC(3,9)
     right_encoder: encoder_right {
         compatible = "alps,ec11";
         label = "Right Encoder";
-        a-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro_a2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro_a3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         steps = <4>; // Adjust based on your encoder
         status = "disabled";
     };
