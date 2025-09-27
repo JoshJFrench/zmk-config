@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2020 The ZMK Project Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/matrix.h>
+#include <dt-bindings/zmk/kscan.h>
+
+/ {
+    chosen-matrix = &default_matrix;
+    chosen-kscan = &default_kscan;
+    
+    default_kscan: kscan_1 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        col-gpios = <
+            &pro_micro_d7   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C0 */
+            &pro_micro_e6   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C1 */
+            &pro_micro_b4   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C2 */
+            &pro_micro_b5   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C3 */
+            &pro_micro_f4   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C4 */
+            &pro_micro_f5   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C5 */
+            &pro_micro_f6   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C6 */
+            &pro_micro_f7   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C7 */
+            &pro_micro_b1   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C8 */
+            &pro_micro_b3   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C9 */
+            &pro_micro_b2   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C10 */
+            &pro_micro_b6   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* C11 */
+        >;
+
+        row-gpios = <
+            &pro_micro_f1   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* R0 */
+            &pro_micro_f0   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* R1 */
+            &pro_micro_d0   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* R2 */
+            &pro_micro_d1   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* R3 */
+        >;
+    };
+
+    encoders {
+        compatible = "zmk,gpios-encoder";
+
+        // LEFT ENCODER (Rotation: Up/Down Arrows)
+        encoder_left: encoder_0 {
+            label = "Left Encoder";
+            gpios = <&pro_micro_d5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+                    <&pro_micro_d4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            status = "okay";
+            steps = <4>; // Adjust based on your encoder
+            
+            // Set bindings for Layer 0 (default)
+            bindings = <
+                &kp UP // Clockwise (CW)
+                &kp DOWN // Counter-Clockwise (CCW)
+                &kp MUTE // Press (Mute/Unmute)
+            >;
+        };
+        
+        // RIGHT ENCODER (Rotation: Left/Right Arrows)
+        encoder_right: encoder_1 {
+            label = "Right Encoder";
+            gpios = <&pro_micro_a1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+                    <&pro_micro_a2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            status = "okay";
+            steps = <4>; // Adjust based on your encoder
+            
+            // Set bindings for Layer 0 (default)
+            bindings = <
+                &kp RIGHT // Clockwise (CW)
+                &kp LEFT // Counter-Clockwise (CCW)
+                &kp K_PLAY_PAUSE // Press (Play)
+            >;
+        };
+    };
+};
