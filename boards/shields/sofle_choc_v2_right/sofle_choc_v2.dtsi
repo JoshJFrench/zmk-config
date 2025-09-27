@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define RC(row, col) (row * 12 + col)
+
 / {
     chosen {
         zmk,kscan = &kscan0;
