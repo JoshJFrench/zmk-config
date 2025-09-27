@@ -69,7 +69,7 @@
             bindings = <
                 &kp RIGHT // Clockwise (CW)
                 &kp LEFT // Counter-Clockwise (CCW)
-                &trans // Press (Do nothing)
+                &kp K_PLAY_PAUSE // Press (Play)
             >;
         };
     };
