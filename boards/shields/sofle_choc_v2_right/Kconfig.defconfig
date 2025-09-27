@@ -1,24 +1,11 @@
-# Left side configuration
-if SHIELD_SOFLE_CHOC_V2_LEFT
-
-config ZMK_KEYBOARD_NAME
-    default "Sofle Choc V2"
-
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
-endif
-
-# Right side configuration  
+# Right side configuration
 if SHIELD_SOFLE_CHOC_V2_RIGHT
 
 config ZMK_KEYBOARD_NAME
     default "Sofle Choc V2"
 
-endif
-
-# Common split configuration
-if SHIELD_SOFLE_CHOC_V2_LEFT || SHIELD_SOFLE_CHOC_V2_RIGHT
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n # Sets this half as the Peripheral (Slave)
 
 config ZMK_SPLIT
     default y

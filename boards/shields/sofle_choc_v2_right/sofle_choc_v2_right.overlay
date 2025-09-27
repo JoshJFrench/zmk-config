@@ -1,17 +1,11 @@
-/*
- * Copyright (c) 2020 The ZMK Project Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include "sofle_choc_v2.dtsi"
 
-// RIGHT SIDE: Transforms columns 6-11
+// RIGHT SIDE: Transforms columns 6-11 (Peripheral half)
 &default_transform {
     col-offset = <6>;
 };
 
-// Enables the right encoder
+// Enables the right encoder and sets its press behavior
 &right_encoder {
     status = "okay";
 };
