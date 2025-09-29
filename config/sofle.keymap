@@ -11,20 +11,10 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 #define BASE 0
-#define LOWER 1
-#define RAISE 2
-#define ADJUST 3
+#define NUMPAD 1
+#define NAV 2
 
 / {
-
-   // Activate ADJUST layer by pressing raise and lower
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        adjust_layer {
-            if-layers = <LOWER RAISE>;
-            then-layer = <ADJUST>;
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -36,40 +26,40 @@
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   '   |
 // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   | BKSPC |
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |  PLAY |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//               |RAISE| ALT  | CTRL | CMD  |  ENTER |  | SPACE | CMD  | LOWER |  [    |  ]   |
+//               | NAV | ALT  | CTRL | CMD  |  ENTER |  | SPACE | CMD  | NUMPAD|  [    |  ]   |
             bindings = <
 &kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                                     &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp MINUS
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                                      &kp Y  &kp U     &kp I     &kp O    &kp P    &kp SQT
 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                                      &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp BSPC
 &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE &kp C_PLAY_PAUSE     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &mo RAISE &kp LALT &kp LCTRL &kp LGUI  &kp RET    &kp SPACE  &kp RGUI  &mo LOWER &kp LBKT  &kp RBKT
+                 &mo NAV   &kp LCTRL &kp LALT &kp LGUI  &kp RET    &kp SPACE  &kp RGUI  &mo NUMPAD &kp LBKT  &kp RBKT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT>;
         };
 
-        lower_layer {
-            display-name = "lower";
+        numpad_layer {
+            display-name = "numpad";
 // TODO: Some binds are waiting for shifted keycode support.
 // ------------------------------------------------------------------------------------------------------------
 // |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
 // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  0   |  1    |  2    |  3   |       |  F12  |
-// |       |  !  |  @  |  #   |  $   |  %   |                   |      |  4    |  5    |  6   |       |  trans|
-// |       |  =  |  -  |  +   |  {   |  }   |        |  |       |      |  7    |  8    |  9   |       |  DEL  |
+// |       |  !  |  @  |  #   |  $   |  %   |                   |      |  4    |  5    |  6   |  DEL  |  trans|
+// |       |  =  |  -  |  +   |  {   |  }   |        |  |       |      |  7    |  8    |  9   |       |  ENTER|
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8     &kp F9    &kp F10     &kp F11
 &kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp 0     &kp 1    &kp 2      &kp 3     &trans      &kp F12
 &trans    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT                 &trans    &kp 4    &kp 5      &kp 6     &kp DEL     &kp BSPC
-&trans    &kp EQUAL &kp MINUS &kp PLUS    &kp LBRC  &kp RBRC   &trans &trans  &trans    &kp 7    &kp 8      &kp 9     &trans      &trans
+&trans    &kp EQUAL &kp MINUS &kp PLUS    &kp LBRC  &kp RBRC   &trans &trans  &trans    &kp 7    &kp 8      &kp 9     &trans      &kp RET
                     &trans    &trans      &trans    &trans     &trans &trans  &trans    &trans   &trans     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        raise_layer {
-            display-name = "raise";
+        nav_layer {
+            display-name = "nav";
 // ------------------------------------------------------------------------------------------------------------
 // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
 // |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
@@ -84,7 +74,7 @@
                         &trans       &trans       &trans       &trans        &trans  &trans  &trans    &trans    &trans   &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         adjust_layer {
