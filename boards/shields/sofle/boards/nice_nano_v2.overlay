@@ -7,19 +7,19 @@
 // Custom pin assignments for Sofle Choc V2
 
 &left_encoder {
-    a-gpios = <&pro_micro 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-    b-gpios = <&pro_micro 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    b-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     steps = <80>;
 };
 
 &right_encoder {
-    a-gpios = <&pro_micro 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-    b-gpios = <&pro_micro 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    a-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    b-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     steps = <80>;
 };
 
-// OLED I2C pin assignments
+// OLED I2C pin assignments  
 &pro_micro_i2c {
-    sda-pin = <17>;
-    scl-pin = <20>;
+    sda-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+    scl-gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
 };
